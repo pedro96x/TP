@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controladores.CtrlPersona;
+import entidades.Persona;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
@@ -22,6 +26,7 @@ import java.awt.Font;
 import java.awt.Button;
 import javax.swing.JSlider;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class ABMPersona extends JFrame {
 
@@ -61,6 +66,9 @@ public class ABMPersona extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		Persona p = new Persona();
+		CtrlPersona controlador = new CtrlPersona();
+		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(33, 31, 66, 14);
@@ -90,10 +98,30 @@ public class ABMPersona extends JFrame {
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
 		
+		Label lblResultado = new Label("-");
+		lblResultado.setAlignment(Label.CENTER);
+		lblResultado.setBounds(119, 234, 62, 22);
+		contentPane.add(lblResultado);
+
+		JCheckBox chckbxHabilitado = new JCheckBox("Habilitado");
+		chckbxHabilitado.setSelected(true);
+		chckbxHabilitado.setBounds(342, 27, 97, 23);
+		contentPane.add(chckbxHabilitado);
+		
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.setForeground(new Color(0, 128, 0));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				p.setNombre(txtNombre.getText());
+				p.setApellido(txtApellido.getText());
+				p.setDni(Integer.parseInt(txtDni.getText()));
+				p.setHabilitado(chckbxHabilitado.isSelected());
+				p.setUser(txtUser.getText());
+				p.setPass(txtPass.getText());
+				controlador.alta(p);
+				lblResultado.setText("Registrado");
+
 			}
 		});
 		btnGuardar.setBounds(392, 291, 89, 23);
@@ -107,11 +135,6 @@ public class ABMPersona extends JFrame {
 		JButton btnActualizar = new JButton("Actualizar");
 		btnActualizar.setBounds(279, 291, 101, 23);
 		contentPane.add(btnActualizar);
-		
-		JCheckBox chckbxHabilitado = new JCheckBox("Habilitado");
-		chckbxHabilitado.setSelected(true);
-		chckbxHabilitado.setBounds(342, 27, 97, 23);
-		contentPane.add(chckbxHabilitado);
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(241, 105, 89, 23);
@@ -150,11 +173,6 @@ public class ABMPersona extends JFrame {
 		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTipo.setBounds(231, 11, 46, 14);
 		contentPane.add(lblTipo);
-		
-		Label lblResultado = new Label("-");
-		lblResultado.setAlignment(Label.CENTER);
-		lblResultado.setBounds(119, 234, 62, 22);
-		contentPane.add(lblResultado);
 		
 		Label lblUser = new Label("User:");
 		lblUser.setAlignment(Label.RIGHT);

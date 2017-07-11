@@ -10,7 +10,7 @@ public class FactoryConexion {
 	private String port="3306";
 	private String user="root";
 	private String password="5300";
-	private String db=""; //Completar con el nombre de la base de datos a usar en el TP 
+	private String db="tp"; //Completar con el nombre de la base de datos a usar en el TP 
 	
 	private static FactoryConexion instancia;
 		
@@ -25,7 +25,7 @@ public class FactoryConexion {
 	
 	public static FactoryConexion getInstancia(){
 		if (FactoryConexion.instancia == null){		
-			FactoryConexion.instancia=new FactoryConexion();
+			FactoryConexion.instancia = new FactoryConexion();
 		}
 		return FactoryConexion.instancia;
 		
