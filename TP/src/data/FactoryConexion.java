@@ -1,7 +1,10 @@
 package data;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+
+//import ui;
+//import entidades;
+//import controladores;
+
 
 public class FactoryConexion {
 	
@@ -10,7 +13,7 @@ public class FactoryConexion {
 	private String port="3306";
 	private String user="root";
 	private String password="5300";
-	private String db="tp"; //Completar con el nombre de la base de datos a usar en el TP 
+	private String db="tp";
 	
 	private static FactoryConexion instancia;
 		

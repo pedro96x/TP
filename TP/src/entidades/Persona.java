@@ -3,7 +3,7 @@ package entidades;
 
 public class Persona {
 	String user;
-	String pass;
+	String pass; // Meto un comentario para no romper nada 
 	int dni;
 	String nombre;
 	String apellido;
