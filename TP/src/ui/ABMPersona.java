@@ -121,7 +121,8 @@ public class ABMPersona extends JFrame {
 				p.setPass(txtPass.getText());
 				controlador.alta(p);
 				lblResultado.setText("Registrado");
-				System.out.println("da")
+				System.out.println("da");
+				
 
 			}
 		});
