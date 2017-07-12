@@ -14,7 +14,7 @@ public class DataPersona {
 		
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select id, nombre, apellido, dni, habilitado FROM personasTP where dni=?");
+					"select id, nombre, apellido, dni, habilitado, user, pass FROM personasTP where dni=?");
 		stmt.setInt(1, docu);
 		rs = stmt.executeQuery();
 			if (rs != null && rs.next()){

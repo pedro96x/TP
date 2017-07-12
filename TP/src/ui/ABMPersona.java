@@ -34,7 +34,7 @@ public class ABMPersona extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
-	private JTextField txtDNI;
+	private JTextField txtId;
 	private JTextField txtUser;
 	private JTextField txtPass;
 
@@ -83,6 +83,12 @@ public class ABMPersona extends JFrame {
 		lblDni.setBounds(77, 109, 22, 14);
 		contentPane.add(lblDni);
 		
+		txtId = new JTextField();
+		txtId.setEditable(false);
+		txtId.setBounds(108, 139, 86, 20);
+		contentPane.add(txtId);
+		txtId.setColumns(10);
+		
 		txtNombre = new JTextField();
 		txtNombre.setBounds(108, 28, 86, 20);
 		contentPane.add(txtNombre);
@@ -100,7 +106,7 @@ public class ABMPersona extends JFrame {
 		
 		Label lblResultado = new Label("-");
 		lblResultado.setAlignment(Label.CENTER);
-		lblResultado.setBounds(119, 234, 62, 22);
+		lblResultado.setBounds(33, 234, 234, 22);
 		contentPane.add(lblResultado);
 
 		JCheckBox chckbxHabilitado = new JCheckBox("Habilitado");
@@ -139,6 +145,24 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnActualizar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Persona p = new Persona();
+				p = controlador.getByDni(Integer.parseInt(txtDni.getText()));
+				if (p != null){
+				txtNombre.setText(p.getNombre());
+				txtApellido.setText(p.getApellido());
+				txtId.setText(Integer.toString(p.getId()));
+				chckbxHabilitado.setSelected(p.isHabilitado()); 
+				txtUser.setText(p.getUser());
+				txtPass.setText(p.getPass());
+				
+				lblResultado.setText("Encontrado");
+				}
+				else{lblResultado.setText("No Encontrado");}
+			}
+		});
 		btnBuscar.setBounds(241, 105, 89, 23);
 		contentPane.add(btnBuscar);
 		
@@ -164,12 +188,6 @@ public class ABMPersona extends JFrame {
 		lbl_ID.setAlignment(Label.RIGHT);
 		lbl_ID.setBounds(37, 137, 62, 22);
 		contentPane.add(lbl_ID);
-		
-		txtDNI = new JTextField();
-		txtDNI.setEditable(false);
-		txtDNI.setBounds(108, 139, 86, 20);
-		contentPane.add(txtDNI);
-		txtDNI.setColumns(10);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
 		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
