@@ -239,5 +239,6 @@ public class ABMPersona extends JFrame {
 		btnAtras.setBounds(10, 291, 89, 23);
 		contentPane.add(btnAtras);
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNombre, txtApellido, txtDni, txtUser, txtPass, rdbtnUsuario, rdbtnAdministrador, rdbtnGerente, btnBuscar, chckbxHabilitado, btnAtras, btnBorrar, btnActualizar, btnGuardar, lblNombre, lblApellido, lblDni, lbl_ID, txtId, lblUser, lblPass, lblResultado, lblTipo}));
+		//No tengo ni idea de por que aparece este setFocusTraversalPolicy
 	}
 }

@@ -8,14 +8,14 @@
  * Contributors:
  *    Google, Inc. - initial API and implementation
  *******************************************************************************/
-package org.eclipse.wb.swing;
+package org.eclipse.wb.swing; //QUE CARAJOS ES ESTO Y POR QUE TIENE QUE VER GOOGLE
 
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FocusTraversalPolicy;
 
 /**
- * Cyclic focus traversal policy based on array of components.
+ * Cyclic focus traversal policy based on array of components.		
  * <p>
  * This class may be freely distributed as part of any application or plugin.
  * 
