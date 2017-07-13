@@ -27,6 +27,8 @@ import java.awt.Button;
 import javax.swing.JSlider;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class ABMPersona extends JFrame {
 
@@ -136,11 +138,30 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.baja(Integer.parseInt(txtDni.getText()));
+				lblResultado.setText("Borrado");
+			}
+		});
 		btnBorrar.setForeground(Color.RED);
 		btnBorrar.setBounds(178, 291, 89, 23);
 		contentPane.add(btnBorrar);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				p.setNombre(txtNombre.getText());
+				p.setApellido(txtApellido.getText());
+				p.setDni(Integer.parseInt(txtDni.getText()));
+				p.setHabilitado(chckbxHabilitado.isSelected());
+				p.setUser(txtUser.getText());
+				p.setPass(txtPass.getText());
+				controlador.modific(p);
+				lblResultado.setText("Actualizado");
+			}
+		});
 		btnActualizar.setBounds(279, 291, 101, 23);
 		contentPane.add(btnActualizar);
 		
@@ -217,5 +238,6 @@ public class ABMPersona extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(10, 291, 89, 23);
 		contentPane.add(btnAtras);
+		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNombre, txtApellido, txtDni, txtUser, txtPass, rdbtnUsuario, rdbtnAdministrador, rdbtnGerente, btnBuscar, chckbxHabilitado, btnAtras, btnBorrar, btnActualizar, btnGuardar, lblNombre, lblApellido, lblDni, lbl_ID, txtId, lblUser, lblPass, lblResultado, lblTipo}));
 	}
 }
