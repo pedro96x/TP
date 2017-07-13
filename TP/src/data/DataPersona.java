@@ -50,7 +50,7 @@ public class DataPersona {
 	
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into personastp(dni , nombre , apellido , habilitado, usuario , pass ) VALUES (?, ?, ?, ?, ?, ?)",
+					"insert into personastp(dni , nombre , apellido , habilitado, user , pass ) VALUES (?, ?, ?, ?, ?, ?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, per.getDni() );
 			stmt.setString(2, per.getNombre() );
@@ -84,7 +84,7 @@ public void deleteByDni(int dni){
 PreparedStatement stmt=null;
 	
 	try{
-		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("DELETE FROM `abmdb2`.`personas` WHERE dni=?");
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("delete from personastp where dni=?");
 		stmt.setInt(1, dni );
 		 stmt.executeUpdate();
 		
@@ -107,12 +107,14 @@ public void actualiza(Persona per){
 PreparedStatement stmt=null;
 	
 	try{
-		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("UPDATE `abmdb2`.`personas` SET dni = ?, nombre = ?, apellido = ?, habilitado = ? WHERE dni = ?");
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement("update personastp set dni = ?, nombre = ?, apellido = ?, habilitado = ?, user = ?, pass = ? WHERE dni = ?");
 		stmt.setInt(1, per.getDni() );
 		stmt.setString(2, per.getNombre() );
 		stmt.setString(3, per.getApellido() );
 		stmt.setBoolean(4, per.isHabilitado() );
-		stmt.setInt(5, per.getDni() );
+		stmt.setString(5, per.getUser());
+		stmt.setString(6, per.getPass());
+		stmt.setInt(7, per.getDni() );
 		 stmt.executeUpdate();
 		
 	} catch (SQLException e) {
