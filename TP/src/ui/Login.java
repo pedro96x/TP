@@ -1,4 +1,6 @@
 package ui;
+import controladores.CtrlLogin;
+import entidades.Persona;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,17 +8,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.BoxLayout;
 import java.awt.TextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
+	private CtrlLogin ctrl=new CtrlLogin();
 
 	private JPanel contentPane;
 	private JPasswordField passFieldPass;
@@ -61,6 +69,26 @@ public class Login extends JFrame {
 		contentPane.add(lblPass);
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Persona p = new Persona();
+				p.setUser(txtUser.getText());
+				p.setPass(passFieldPass.getText());
+				Persona per =ctrl.compara(p);
+				
+				
+				if(per.getNombre()!=null){
+						JOptionPane.showMessageDialog(contentPane, "Login realizado exitosamente");
+						Menu menu = new Menu();
+						menu.setVisible(true);
+						
+						}
+					else{JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");
+					}				
+				
+			}
+		});
 		btnIngresar.setBounds(335, 172, 89, 23);
 		contentPane.add(btnIngresar);
 		
