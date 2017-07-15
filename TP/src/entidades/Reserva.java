@@ -5,7 +5,7 @@ import java.util.Date;//Que diferencia hay entre java.util.Date y java.sql.Date?
 public class Reserva {
 	private int id;
 	Auto autoReservado;
-	Date fecha; 
+	java.sql.Date fecha; 
 	String detalle;
 	int cantHorasReserv;
 	
@@ -21,10 +21,10 @@ public class Reserva {
 	public void setAutoReservado(Auto autoReservado) {
 		this.autoReservado = autoReservado;
 	}
-	public Date getFecha() {
+	public java.sql.Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(java.sql.Date fecha) {
 		this.fecha = fecha;
 	}
 	public String getDetalle() {

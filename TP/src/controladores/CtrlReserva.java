@@ -1,11 +1,12 @@
 package controladores;
 
+import data.DataReserva;
 import entidades.Reserva;
 
 public class CtrlReserva {
-
+		DataReserva dataRes = new DataReserva();
 	public void setReserva(Reserva res) {
-		// TODO Auto-generated method stub
+		dataRes.setReserva(res);
 		
 	}
 
