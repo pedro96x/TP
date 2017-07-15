@@ -6,18 +6,25 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controladores.CtrlAuto;
+import controladores.CtrlTipoAuto;
+import entidades.*;
+
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -53,6 +60,13 @@ public class ABMAuto extends JFrame {
 	 * Create the frame.
 	 */
 	public ABMAuto() {
+		
+		CtrlAuto controlador = new CtrlAuto();
+		Auto auto = new Auto();
+		CtrlTipoAuto controladorTipoAuto = new CtrlTipoAuto();
+		 
+		ArrayList <TipoAuto> arrayTiposAutos = controladorTipoAuto.getArrayList();
+		
 		setTitle("ABM Auto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -85,10 +99,20 @@ public class ABMAuto extends JFrame {
 		comboBoxTipoAuto.setToolTipText("Tipo");
 		comboBoxTipoAuto.setBounds(132, 42, 292, 20);
 		comboBoxTipoAuto.addItem("Seleccione tipo ");
-		comboBoxTipoAuto.addItem("Renault Scenic");
-		comboBoxTipoAuto.addItem("Ford focus 2014");
-		comboBoxTipoAuto.addItem("Ford focus 2015");
+//		comboBoxTipoAuto.addItem("Renault Scenic");
+//		comboBoxTipoAuto.addItem("Ford focus 2014");
+//		comboBoxTipoAuto.addItem("Ford focus 2015");
+		
+		
+		 
+		 for (TipoAuto tipoAuto : arrayTiposAutos){
+			 comboBoxTipoAuto.addItem(tipoAuto.getNombre());
+		 }
 		contentPane.add(comboBoxTipoAuto);
+		
+		
+		
+		
 		
 		lblTipo = new JLabel("Tipo:");
 		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -96,22 +120,61 @@ public class ABMAuto extends JFrame {
 		contentPane.add(lblTipo);
 		
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+				
+				if("Seleccione tipo " == comboBoxTipoAuto.getSelectedItem()){
+					JOptionPane.showMessageDialog(null,
+						    "No selecciono ningun tipo", 
+						    "Error",
+						    JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				 for (TipoAuto tipoAuto : arrayTiposAutos){
+				if (tipoAuto.getNombre() == comboBoxTipoAuto.getSelectedItem()){
+					auto.setNombre(txtDescripcion.getText());	
+					auto.setTipo(tipoAuto);									
+					controlador.setAuto(auto);									}
+				 											}
+				    }
+				
+			}
+		});
 		btnGuardar.setForeground(new Color(0, 128, 0));
 		btnGuardar.setBounds(335, 227, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Auto auto = new Auto();
+				auto = controlador.getByID(Integer.parseInt(txtID.getText()));
+				txtDescripcion.setText(auto.getNombre());
+			}
+		});
 		btnBuscar.setBounds(228, 123, 89, 23);
 		contentPane.add(btnBuscar);
 		
 		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				controlador.baja(Integer.parseInt(txtID.getText()));
+				
+				
+			}
+		});
 		btnBorrar.setForeground(Color.RED);
-		btnBorrar.setBounds(164, 227, 89, 23);
+		btnBorrar.setBounds(129, 227, 89, 23);
 		contentPane.add(btnBorrar);
 		
 		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
@@ -123,5 +186,30 @@ public class ABMAuto extends JFrame {
 		lblBuscarPorId.setBounds(76, 102, 86, 14);
 		contentPane.add(lblBuscarPorId);
 		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if("Seleccione tipo " == comboBoxTipoAuto.getSelectedItem()){
+					JOptionPane.showMessageDialog(null,
+						    "No selecciono ningun tipo", 
+						    "Error",
+						    JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+				 for (TipoAuto tipoAuto : arrayTiposAutos){
+				if (tipoAuto.getNombre() == comboBoxTipoAuto.getSelectedItem()){
+					auto.setNombre(txtDescripcion.getText());	
+					auto.setTipo(tipoAuto);
+					auto.setId(Integer.parseInt(txtID.getText()));
+					controlador.actualizar(auto);									}
+				 											}
+				    }
+				
+			}
+		});
+		btnActualizar.setBounds(236, 227, 89, 23);
+		contentPane.add(btnActualizar);
+		
 	}
 }
+

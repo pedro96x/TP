@@ -1,6 +1,8 @@
 
 package controladores;
 
+import java.util.ArrayList;
+
 import data.*;
 import entidades.*;
 
@@ -26,5 +28,9 @@ public class CtrlTipoAuto {
 	
 	public TipoAuto getByID(int id) {
 		return dataTipoAuto.getByID(id);
+	}
+
+	public ArrayList<TipoAuto> getArrayList() {
+		return dataTipoAuto.getArrayList();
 	}
 }

@@ -128,6 +128,48 @@ PreparedStatement stmt=null;
 }
 
 
+public ArrayList<TipoAuto> getArrayList() {
+	
+	TipoAuto tipoauto = null;
+	ResultSet rs = null;
+	PreparedStatement stmt = null;
+	ArrayList <TipoAuto> arrayTiposAutos = new ArrayList <TipoAuto>();	
+	
+	try{
+		stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+				"select id, nombre_tipo_auto, cant_max_res, lim_max_tiempo_reserva, dias_de_ant_nec FROM tiposdeauto");
+	
+	rs = stmt.executeQuery();
+		while (rs != null && rs.next()){
+			tipoauto = new TipoAuto();
+			tipoauto.setId(rs.getInt("id"));
+			tipoauto.setNombre(rs.getString("nombre_tipo_auto"));
+			tipoauto.setCantMaxReservas((rs.getInt("cant_max_res")));
+			tipoauto.setLimMaxDeTiempoDeReserva((rs.getInt("lim_max_tiempo_reserva")));
+			tipoauto.setMinDiasDeAnti((rs.getInt("dias_de_ant_nec")));
+			arrayTiposAutos.add(tipoauto);
+			
+			
+		}
+	} catch (SQLException e){
+		e.printStackTrace();
+	}
+	
+	try{
+		if(rs != null) rs.close();
+		if(stmt != null) stmt.close();
+		FactoryConexion.getInstancia().releaseConn();
+	} catch (SQLException e){
+		e.printStackTrace();
+	}
+	
+	return arrayTiposAutos;
+	
+	
+	 
+}
+
+
 
 	
 	
@@ -144,3 +186,12 @@ PreparedStatement stmt=null;
 	
 	
 }
+
+	
+	
+	
+	
+	
+	
+	
+
