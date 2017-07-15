@@ -80,7 +80,7 @@ public class Login extends JFrame {
 				
 				
 				if(per.getNombre()!=null){
-						JOptionPane.showMessageDialog(null, "Login realizado exitosamente");
+						JOptionPane.showMessageDialog(contentPane, "Login realizado exitosamente");
 						
 						Menu menu = new Menu();
 						menu.setVisible(true);

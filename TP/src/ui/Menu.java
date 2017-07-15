@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Menu extends JFrame {
 
@@ -44,6 +45,7 @@ public class Menu extends JFrame {
 	 * Create the frame.
 	 */
 	public Menu() {
+		setTitle("Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 795, 488);
 		contentPane = new JPanel();
@@ -52,14 +54,14 @@ public class Menu extends JFrame {
 		contentPane.setLayout(null);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setEnabled(false);
+		textFieldNombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		textFieldNombre.setEditable(false);
 		textFieldNombre.setBounds(543, 11, 101, 20);
 		contentPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldApellido = new JTextField();
-		textFieldApellido.setEnabled(false);
+		textFieldApellido.setFont(new Font("Tahoma", Font.BOLD, 11));
 		textFieldApellido.setEditable(false);
 		textFieldApellido.setBounds(654, 11, 93, 20);
 		contentPane.add(textFieldApellido);

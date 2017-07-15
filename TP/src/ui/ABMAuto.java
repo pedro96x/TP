@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ABMAuto extends JFrame {
 
@@ -52,7 +54,7 @@ public class ABMAuto extends JFrame {
 	 */
 	public ABMAuto() {
 		setTitle("ABM Auto");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -108,6 +110,11 @@ public class ABMAuto extends JFrame {
 		contentPane.add(btnBorrar);
 		
 		btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnAtras.setBounds(10, 227, 89, 23);
 		contentPane.add(btnAtras);
 		

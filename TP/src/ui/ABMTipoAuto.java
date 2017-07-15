@@ -58,7 +58,7 @@ public class ABMTipoAuto extends JFrame {
 	 */
 	public ABMTipoAuto() {
 		setTitle("ABM Tipo de Auto");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 541, 292);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -118,6 +118,11 @@ public class ABMTipoAuto extends JFrame {
 		contentPane.add(lblHs);
 		
 		btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnAtras.setBounds(12, 218, 89, 23);
 		contentPane.add(btnAtras);
 		
