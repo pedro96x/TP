@@ -135,7 +135,7 @@ public class ABMTipoAuto extends JFrame {
 				tipoauto.setLimMaxDeTiempoDeReserva(Integer.parseInt(txtLimiteMaxTiempo.getText()));
 				tipoauto.setMinDiasDeAnti(Integer.parseInt(txtDiasAntNec.getText()));
 				controlador.alta(tipoauto);
-				
+				//meto comentario para commitiar nomas 
 			}
 		});
 		btnGuardar.setForeground(new Color(0, 128, 0));
