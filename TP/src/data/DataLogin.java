@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entidades.Persona;
+import ui.Login;
 
 public class DataLogin {
 	public Persona compara(Persona per){
@@ -31,13 +32,14 @@ public class DataLogin {
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
-		}
+			}
 		
 		try{
 			if(rs != null) rs.close();
 			if(stmt != null) stmt.close();
 			FactoryConexion.getInstancia().releaseConn();
 		} catch (SQLException e){
+			
 			e.printStackTrace();
 		}
 		

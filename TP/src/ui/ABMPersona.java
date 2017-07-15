@@ -49,6 +49,7 @@ public class ABMPersona extends JFrame {
 				try {
 					ABMPersona frame = new ABMPersona();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,7 +62,7 @@ public class ABMPersona extends JFrame {
 	 */
 	public ABMPersona() {
 		setTitle("ABMC Usuarios");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 507, 364);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -236,6 +237,12 @@ public class ABMPersona extends JFrame {
 		contentPane.add(lblPass);
 		
 		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				
+			}
+		});
 		btnAtras.setBounds(10, 291, 89, 23);
 		contentPane.add(btnAtras);
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNombre, txtApellido, txtDni, txtUser, txtPass, rdbtnUsuario, rdbtnAdministrador, rdbtnGerente, btnBuscar, chckbxHabilitado, btnAtras, btnBorrar, btnActualizar, btnGuardar, lblNombre, lblApellido, lblDni, lbl_ID, txtId, lblUser, lblPass, lblResultado, lblTipo}));

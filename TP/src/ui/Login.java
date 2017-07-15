@@ -4,6 +4,7 @@ import entidades.Persona;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -79,13 +80,15 @@ public class Login extends JFrame {
 				
 				
 				if(per.getNombre()!=null){
-						JOptionPane.showMessageDialog(contentPane, "Login realizado exitosamente");
+						JOptionPane.showMessageDialog(null, "Login realizado exitosamente");
+						
 						Menu menu = new Menu();
 						menu.setVisible(true);
+						menu.setPersona(per);
 						
 						}
-					else{JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");
-					}				
+					
+							
 				
 			}
 		});
@@ -105,4 +108,7 @@ public class Login extends JFrame {
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 	}
+	public void incorrecto(){
+	JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
+	
 }
