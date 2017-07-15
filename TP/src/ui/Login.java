@@ -76,10 +76,11 @@ public class Login extends JFrame {
 				Persona p = new Persona();
 				p.setUser(txtUser.getText());
 				p.setPass(passFieldPass.getText());
-				Persona per =ctrl.compara(p);
+				Persona per=null;
+				per =ctrl.compara(p);
+				if (per == null){JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
 				
-				
-				if(per.getNombre()!=null){
+				if(per!=null){
 						JOptionPane.showMessageDialog(contentPane, "Login realizado exitosamente");
 						
 						Menu menu = new Menu();
@@ -96,7 +97,8 @@ public class Login extends JFrame {
 		contentPane.add(btnIngresar);
 		
 		JLabel label = new JLabel("-");
-		label.setBounds(207, 222, 46, 14);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setBounds(105, 222, 213, 14);
 		contentPane.add(label);
 		
 		passFieldPass = new JPasswordField();
@@ -108,7 +110,7 @@ public class Login extends JFrame {
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 	}
-	public void incorrecto(){
-	JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
+//	public void incorrecto(){
+//	JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
 	
 }
