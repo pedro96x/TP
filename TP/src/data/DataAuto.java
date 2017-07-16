@@ -3,9 +3,12 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import entidades.Auto;
 import entidades.Persona;
+import entidades.Reserva;
+import entidades.TipoAuto;
 
 public class DataAuto {
 
@@ -121,4 +124,45 @@ public class DataAuto {
 	}
 
 
-	}
+	public ArrayList<Auto> getAutos() {
+	
+		ArrayList<Auto> autos = new ArrayList<Auto>();
+//		autos =null;
+		Auto auto;
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+		
+		try{
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+					"select nombre,id_auto,id_tipoauto FROM autos");
+		rs = stmt.executeQuery();
+			if (rs != null && rs.next()){
+				auto = new Auto();
+				auto.setNombre(rs.getString("nombre"));
+				auto.setId(rs.getInt("id_auto"));
+				TipoAuto tipo = new TipoAuto();
+				tipo.setId(rs.getInt("id_tipoauto"));
+				auto.setTipo(tipo);
+
+				
+				
+				autos.add(auto);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		try{
+			if(rs != null) rs.close();
+			if(stmt != null) stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return autos;
+		
+		
+	}}
+
+	

@@ -30,10 +30,9 @@ import java.awt.event.ActionEvent;
 public class ABMReserva extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtFecha;
-	private JTextField txtHora;
+	private JTextField txtFechaIni;
+	private JTextField txtFechaFin;
 	private JTextField txtDetalle;
-	private JTextField txtCantHoras;
 
 	/**
 	 * Launch the application.
@@ -89,24 +88,24 @@ public class ABMReserva extends JFrame {
 		label.setBounds(10, 14, 46, 14);
 		contentPane.add(label);
 		
-		JLabel lblFecha = new JLabel("Fecha:");
+		JLabel lblFecha = new JLabel("Fecha inicio:");
 		lblFecha.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblFecha.setBounds(10, 45, 46, 14);
+		lblFecha.setBounds(10, 45, 95, 14);
 		contentPane.add(lblFecha);
 		
-		txtFecha = new JTextField();
-		txtFecha.setBounds(66, 42, 68, 20);
-		contentPane.add(txtFecha);
-		txtFecha.setColumns(10);
+		txtFechaIni = new JTextField();
+		txtFechaIni.setBounds(115, 42, 68, 20);
+		contentPane.add(txtFechaIni);
+		txtFechaIni.setColumns(10);
 		
-		txtHora = new JTextField();
-		txtHora.setBounds(200, 42, 39, 20);
-		contentPane.add(txtHora);
-		txtHora.setColumns(10);
+		txtFechaFin = new JTextField();
+		txtFechaFin.setBounds(323, 42, 62, 20);
+		contentPane.add(txtFechaFin);
+		txtFechaFin.setColumns(10);
 		
-		JLabel lblHora = new JLabel("Hora:");
+		JLabel lblHora = new JLabel("Fecha fin:");
 		lblHora.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHora.setBounds(144, 45, 46, 14);
+		lblHora.setBounds(236, 45, 77, 14);
 		contentPane.add(lblHora);
 		
 		txtDetalle = new JTextField();
@@ -151,8 +150,8 @@ public class ABMReserva extends JFrame {
 				if (tipoAuto.getNombre() == comboBox.getSelectedItem()){
 					
 					res.setDetalle(txtDetalle.getText());	
-					res.setFecha(Date.valueOf(txtFecha.getText()));	
-					res.setCantHorasReserv(Integer.parseInt(txtCantHoras.getText()));
+					res.setFechaIni(Date.valueOf(txtFechaIni.getText()));	
+					
 					
 					
 					
@@ -170,24 +169,22 @@ public class ABMReserva extends JFrame {
 		btnAtras.setBounds(10, 227, 89, 23);
 		contentPane.add(btnAtras);
 		
-		txtCantHoras = new JTextField();
-		txtCantHoras.setColumns(10);
-		txtCantHoras.setBounds(210, 73, 89, 20);
-		contentPane.add(txtCantHoras);
-		
-		JLabel lblCantHorasA = new JLabel("Cant. horas a reservar:");
-		lblCantHorasA.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCantHorasA.setBounds(39, 76, 161, 14);
-		contentPane.add(lblCantHorasA);
-		
 		JButton btnVerificarFecha = new JButton("Verificar fecha");
 		btnVerificarFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 //				ArrayList <TipoAuto> autosDisponibles = controladorReserva.getAutosDisponibles(); //A esto le mandas la fecha, la cantidad de horas y tipo de auto y te devuelve los autos disponibles para esa fecha 
+				for (TipoAuto tipoAuto : arrayTiposAutos){
+					if (tipoAuto.getNombre() == comboBox.getSelectedItem()){
 				
+				ArrayList<Auto> autosdisponibles = controladorReserva.getAutosDisponibles(Date.valueOf(txtFechaIni.getText()), Date.valueOf(txtFechaFin.getText()), tipoAuto );
+				for (Auto auto : autosdisponibles){
+					 comboBox2.addItem(auto.getNombre());
+				 }
+				
+					}
 			}
-		});
+		}});
 		btnVerificarFecha.setBounds(369, 166, 125, 23);
 		contentPane.add(btnVerificarFecha);
 		

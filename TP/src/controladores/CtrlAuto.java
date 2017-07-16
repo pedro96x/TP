@@ -1,5 +1,7 @@
 package controladores;
 
+import java.util.ArrayList;
+
 import data.DataAuto;
 import entidades.Auto;
 
@@ -17,6 +19,9 @@ dataAuto.actualiza(auto);
 	public Auto getByID(int id) {
 		return dataAuto.getByID(id);
 		
+	}
+	public ArrayList<Auto> getAutos() {
+		return dataAuto.getAutos();
 	}
 
 }
