@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import controladores.CtrlTipoAuto;
 import entidades.Auto;
 import entidades.Persona;
 import entidades.Reserva;
@@ -13,19 +14,22 @@ import entidades.TipoAuto;
 public class DataAuto {
 
 		public Auto getByID(int ID){
-			
+			CtrlTipoAuto controladorTipoAuto = new CtrlTipoAuto();
+			TipoAuto tipoAuto;
 			Auto auto = null;
 			ResultSet rs = null;
 			PreparedStatement stmt = null;
 			
 			try{
 				stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-						"select nombre FROM autos where id_auto=?");
+						"select nombre , id_tipoauto,id_auto FROM autos where id_auto=?");
 			stmt.setInt(1, ID);
 			rs = stmt.executeQuery();
 				if (rs != null && rs.next()){
 					auto = new Auto();
-				//	auto.set(rs.getInt("id_tipoauto"));
+					tipoAuto = controladorTipoAuto.getByID(rs.getInt("id_tipoauto"));
+					auto.setId(rs.getInt("id_auto"));
+					auto.setTipo(tipoAuto);
 					auto.setNombre(rs.getString("nombre"));
 				}
 			} catch (SQLException e){
@@ -128,7 +132,7 @@ public class DataAuto {
 	
 		ArrayList<Auto> autos = new ArrayList<Auto>();
 //		autos =null;
-		Auto auto;
+		Auto auto=null;
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
 		
@@ -136,7 +140,7 @@ public class DataAuto {
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
 					"select nombre,id_auto,id_tipoauto FROM autos");
 		rs = stmt.executeQuery();
-			if (rs != null && rs.next()){
+			while (rs != null && rs.next()){
 				auto = new Auto();
 				auto.setNombre(rs.getString("nombre"));
 				auto.setId(rs.getInt("id_auto"));

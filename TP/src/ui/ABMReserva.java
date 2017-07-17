@@ -69,7 +69,7 @@ public class ABMReserva extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setToolTipText("Tipo");
 		comboBox.setBounds(66, 11, 292, 20);
 		comboBox.addItem("Seleccione tipo ");
@@ -119,7 +119,7 @@ public class ABMReserva extends JFrame {
 		lblDetalle.setBounds(10, 141, 46, 14);
 		contentPane.add(lblDetalle);
 		
-		JComboBox comboBox2 = new JComboBox();
+		JComboBox<String> comboBox2 = new JComboBox<String>();
 		comboBox2.setBounds(66, 167, 292, 20);
 		
 //		 for (Auto auto : autosDisponibles){
@@ -179,6 +179,7 @@ public class ABMReserva extends JFrame {
 				
 				ArrayList<Auto> autosdisponibles = controladorReserva.getAutosDisponibles(Date.valueOf(txtFechaIni.getText()), Date.valueOf(txtFechaFin.getText()), tipoAuto );
 				for (Auto auto : autosdisponibles){
+					
 					 comboBox2.addItem(auto.getNombre());
 				 }
 				
