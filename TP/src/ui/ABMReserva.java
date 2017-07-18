@@ -174,15 +174,18 @@ public class ABMReserva extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 //				ArrayList <TipoAuto> autosDisponibles = controladorReserva.getAutosDisponibles(); //A esto le mandas la fecha, la cantidad de horas y tipo de auto y te devuelve los autos disponibles para esa fecha 
+				TipoAuto a=null;
 				for (TipoAuto tipoAuto : arrayTiposAutos){
-					if (tipoAuto.getNombre() == comboBox.getSelectedItem()){
+					if (tipoAuto.getNombre().equals(comboBox.getSelectedItem())){
+						 a = tipoAuto; 
 				
-				ArrayList<Auto> autosdisponibles = controladorReserva.getAutosDisponibles(Date.valueOf(txtFechaIni.getText()), Date.valueOf(txtFechaFin.getText()), tipoAuto );
-				for (Auto auto : autosdisponibles){
+				ArrayList<Auto> autosdisponibles = controladorReserva.getAutosDisponibles(Date.valueOf(txtFechaIni.getText()), Date.valueOf(txtFechaFin.getText()), a );
+				for (Auto aut : autosdisponibles){
 					
-					 comboBox2.addItem(auto.getNombre());
+					 comboBox2.addItem(aut.getNombre());
 				 }
 				
+					
 					}
 			}
 		}});

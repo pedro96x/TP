@@ -24,10 +24,13 @@ public class CtrlReserva {
 		
 		
 		for (Reserva reserva: reservas){
-			if((reserva.getAutoReservado().getTipo().getId() == tipoauto.getId()
-					&&
-				NuevoDate.seSolapan(reserva.getFechaIni(),reserva.getFechaFin(),fechaInicioRes,fechaFinRes))
-					|| reserva.getAutoReservado().getTipo().getId() != tipoauto.getId() ){
+			if(//esto esta comentado porque primero quiero que me funcione el tema de que me muestre solo 
+					//los autos del tipo de auto que le pedí en el primer combobox
+					//(reserva.getAutoReservado().getTipo().getId() == tipoauto.getId()
+					//&&
+				//NuevoDate.seSolapan(reserva.getFechaIni(),reserva.getFechaFin(),fechaInicioRes,fechaFinRes))
+					//||
+					!reserva.getAutoReservado().getTipo().equals(tipoauto)) {
 				
 				
 				auto = controladorAuto.getByID(reserva.getAutoReservado().getId());
