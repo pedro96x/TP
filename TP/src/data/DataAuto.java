@@ -128,8 +128,8 @@ public class DataAuto {
 	}
 
 
-	public ArrayList<Auto> getAutos() {
-	
+	public ArrayList<Auto> getAutosByID(int id) {
+		
 		ArrayList<Auto> autos = new ArrayList<Auto>();
 //		autos =null;
 		Auto auto=null;
@@ -138,7 +138,8 @@ public class DataAuto {
 		
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select nombre,id_auto,id_tipoauto FROM autos");
+					"select nombre,id_auto,id_tipoauto FROM autos WHERE id_tipoauto = ?");
+			stmt.setInt(1, id);
 		rs = stmt.executeQuery();
 			while (rs != null && rs.next()){
 				auto = new Auto();

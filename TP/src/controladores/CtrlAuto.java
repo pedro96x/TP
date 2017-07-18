@@ -20,8 +20,8 @@ dataAuto.actualiza(auto);
 		return dataAuto.getByID(id);
 		
 	}
-	public ArrayList<Auto> getAutos() {
-		return dataAuto.getAutos();
+	public ArrayList<Auto> getAutosByID(int id) {
+		return dataAuto.getAutosByID(id);
 	}
 
 }
