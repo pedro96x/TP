@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controladores.CtrlAuto;
 import controladores.CtrlReserva;
 import controladores.CtrlTipoAuto;
 import entidades.Auto;
@@ -56,9 +57,11 @@ public class ABMReserva extends JFrame {
 	public ABMReserva() {
 		CtrlReserva controladorReserva=new CtrlReserva();
 		CtrlTipoAuto controladorTipoAuto = new CtrlTipoAuto();
-		 
-		ArrayList <TipoAuto> arrayTiposAutos = controladorTipoAuto.getArrayList();
+		CtrlAuto controladorAuto = new  CtrlAuto();
 		
+		ArrayList <TipoAuto> arrayTiposAutos = controladorTipoAuto.getArrayList();
+		ArrayList <Auto> arrayAutos= controladorAuto.getArrayList();
+		ArrayList <Auto> arrayMismoTipoAutos= new ArrayList <Auto>();
 		//ArrayList <TipoAuto> autosDisponibles = controladorReserva.getAutosDisponibles();
 		
 		setTitle("ABM Reserva");
@@ -122,10 +125,7 @@ public class ABMReserva extends JFrame {
 		JComboBox<String> comboBox2 = new JComboBox<String>();
 		comboBox2.setBounds(66, 167, 292, 20);
 		
-//		 for (Auto auto : autosDisponibles){
-//			 comboBox.addItem(auto.getNombre());
-//		 }
-		
+
 		
 		
 		contentPane.add(comboBox2);
@@ -133,34 +133,26 @@ public class ABMReserva extends JFrame {
 		JButton btnReservar = new JButton("Reservar");
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-				Reserva res = new Reserva (); 
-				
-				
-				if("Seleccione tipo " == comboBox.getSelectedItem()){
-					JOptionPane.showMessageDialog(null,
-						    "No selecciono ningun tipo", 
-						    "Error",
-						    JOptionPane.ERROR_MESSAGE);
+				Reserva res = new Reserva();
+			Auto au=null;
+				int a=0;
+				for (int i=0;i<arrayAutos.size();i++){
+					if (arrayAutos.get(i).getNombre().equals(comboBox2.getSelectedItem())){
+						 a = arrayAutos.get(i).getId(); }}
+				for (int j=0;j<arrayAutos.size();j++){
+					if(arrayAutos.get(j).getTipo().getId()==a){
+						au=arrayAutos.get(j);
+					}
 				}
-				else{
-				 for (TipoAuto tipoAuto : arrayTiposAutos){
-				if (tipoAuto.getNombre() == comboBox.getSelectedItem()){
-					
-					res.setDetalle(txtDetalle.getText());	
-					res.setFechaIni(Date.valueOf(txtFechaIni.getText()));	
-					
-					
-					
-					
-					
-					
-					controladorReserva.setReserva(res);									}
-				 											}
-				    }
-			}
+				res.setAutoReservado(au);
+				res.setFechaIni(Date.valueOf(txtFechaIni.getText()));
+				res.setFechaFin(Date.valueOf(txtFechaFin.getText()));
+				res.setDetalle(txtDetalle.getText());
+				
+				controladorReserva.setReserva(res);
+				}
+
+			
 		});
 		btnReservar.setBounds(335, 227, 89, 23);
 		contentPane.add(btnReservar);
@@ -172,25 +164,27 @@ public class ABMReserva extends JFrame {
 		JButton btnVerificarFecha = new JButton("Verificar fecha");
 		btnVerificarFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-//				ArrayList <TipoAuto> autosDisponibles = controladorReserva.getAutosDisponibles(); //A esto le mandas la fecha, la cantidad de horas y tipo de auto y te devuelve los autos disponibles para esa fecha 
-				TipoAuto a=null;
-				for (TipoAuto tipoAuto : arrayTiposAutos){
-					if (tipoAuto.getNombre().equals(comboBox.getSelectedItem())){
-						 a = tipoAuto; 
-				
-				ArrayList<Auto> autosdisponibles = controladorReserva.getAutosDisponibles(Date.valueOf(txtFechaIni.getText()), Date.valueOf(txtFechaFin.getText()), a );
-				for (Auto aut : autosdisponibles){
-					
-					 comboBox2.addItem(aut.getNombre());
-				 }
-				
-					
+				int a=0;
+				for (int i=0;i<arrayTiposAutos.size();i++){
+					if (arrayTiposAutos.get(i).getNombre().equals(comboBox.getSelectedItem())){
+						 a = arrayTiposAutos.get(i).getId(); }}
+				for (int j=0;j<arrayAutos.size();j++){
+					if(arrayAutos.get(j).getTipo().getId()==a){
+						arrayMismoTipoAutos.add(arrayAutos.get(j));
 					}
-			}
-		}});
-		btnVerificarFecha.setBounds(369, 166, 125, 23);
-		contentPane.add(btnVerificarFecha);
+				}
+				ArrayList<Auto> autosDisponibles = new ArrayList<Auto>();
+						autosDisponibles=controladorReserva.getAutosDisponibles(txtFechaIni.getText(), txtFechaFin.getText(),arrayMismoTipoAutos  );
+
 		
-	}
+						for(int k=0;k<autosDisponibles.size();k++){
+							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}
+							 
+				 }
+		
+	});
+	btnVerificarFecha.setBounds(369, 166, 125, 23);
+	contentPane.add(btnVerificarFecha);
+	
+}
 }

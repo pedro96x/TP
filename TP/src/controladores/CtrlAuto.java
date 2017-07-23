@@ -23,5 +23,9 @@ dataAuto.actualiza(auto);
 	public ArrayList<Auto> getAutosByID(int id) {
 		return dataAuto.getAutosByID(id);
 	}
+	public ArrayList<Auto> getArrayList() {
+		// TODO Auto-generated method stub
+		return dataAuto.getArrayList();
+	}
 
 }

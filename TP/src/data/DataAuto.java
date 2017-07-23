@@ -10,6 +10,7 @@ import entidades.Auto;
 import entidades.Persona;
 import entidades.Reserva;
 import entidades.TipoAuto;
+import entidades.Auto;
 
 public class DataAuto {
 
@@ -168,6 +169,53 @@ public class DataAuto {
 		return autos;
 		
 		
-	}}
+	}
+
+
+	
+
+
+	public ArrayList<Auto> getArrayList() {
+		
+			
+			Auto auto = null;
+			ResultSet rs = null;
+			PreparedStatement stmt = null;
+			ArrayList <Auto> arrayAutos = new ArrayList <Auto>();	
+			
+			try{
+				stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
+						"SELECT id_auto,nombre,id_tipoauto FROM tp.autos");
+			
+			rs = stmt.executeQuery();
+				while (rs != null && rs.next()){
+					auto = new Auto();
+					auto.setId(rs.getInt("id_auto"));
+					auto.setNombre(rs.getString("nombre"));
+					TipoAuto tipoAuto = new TipoAuto();
+					tipoAuto.setId(rs.getInt("id_tipoauto"));
+					auto.setTipo(tipoAuto);
+					arrayAutos.add(auto);
+					
+					
+				}
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			try{
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				FactoryConexion.getInstancia().releaseConn();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			return arrayAutos;
+			
+			
+			 
+		}}
+
 
 	
