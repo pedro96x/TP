@@ -16,13 +16,14 @@ public class DataReserva {
 		
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"INSERT INTO tp.reservas (auto_reservado,fechain, fechafin,detalle,cant_horas_reserv) VALUES(?,?,?,?,?)",
+					"insert into reservas(fechain,fechafin,detalle,auto_reservado) values(?,?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
-			stmt.setInt(1,res.getAutoReservado().getId());
-			stmt.setDate(2,res.getFechaIni());
-			stmt.setDate(3,res.getFechaIni());
-			stmt.setString(4,res.getDetalle());
-			stmt.setInt(5,res.getCantHorasReserv());
+			
+			stmt.setDate(1,res.getFechaIni());
+			stmt.setDate(2,res.getFechaFin());
+			stmt.setString(3,res.getDetalle());
+			stmt.setInt(4,res.getAutoReservado().getId());
+			
 			
 			
 			 stmt.executeUpdate();

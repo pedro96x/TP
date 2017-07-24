@@ -87,6 +87,7 @@ public class Login extends JFrame {
 						menu.setVisible(true);
 						menu.setPersona(per);
 						
+						
 						}
 					
 							

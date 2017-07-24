@@ -104,6 +104,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ABMReserva gestRes = new ABMReserva();
 				gestRes.setVisible(true);
+				
 			}
 		});
 		btnGestionarReservas.setBounds(142, 277, 502, 33);
@@ -115,4 +116,5 @@ public class Menu extends JFrame {
 		textFieldApellido.setText(per.getApellido());
 		
 	}
+	
 }

@@ -21,7 +21,7 @@ public class Reserva {
 		this.fechaFin = fechaFin;
 	}
 	String detalle;
-	int cantHorasReserv;
+	
 	
 	public int getId() {
 		return id;
@@ -43,10 +43,5 @@ public class Reserva {
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
 	}
-	public int getCantHorasReserv() {
-		return cantHorasReserv;
-	}
-	public void setCantHorasReserv(int cantHorasReserv) {
-		this.cantHorasReserv = cantHorasReserv;
-	}
+	
 }

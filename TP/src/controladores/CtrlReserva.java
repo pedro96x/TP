@@ -16,7 +16,8 @@ public class CtrlReserva {
 		
 	
 		public void setReserva(Reserva res) {
-		dataRes.setReserva(res);
+
+					dataRes.setReserva(res);
 	}
 
 	

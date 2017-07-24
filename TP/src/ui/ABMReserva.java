@@ -12,6 +12,7 @@ import controladores.CtrlAuto;
 import controladores.CtrlReserva;
 import controladores.CtrlTipoAuto;
 import entidades.Auto;
+import entidades.Persona;
 import entidades.Reserva;
 import entidades.TipoAuto;
 
@@ -29,7 +30,7 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 
 public class ABMReserva extends JFrame {
-
+	Persona per;
 	private JPanel contentPane;
 	private JTextField txtFechaIni;
 	private JTextField txtFechaFin;
@@ -137,10 +138,10 @@ public class ABMReserva extends JFrame {
 			Auto au=null;
 				int a=0;
 				for (int i=0;i<arrayAutos.size();i++){
-					if (arrayAutos.get(i).getNombre().equals(comboBox2.getSelectedItem())){
+					if (arrayAutos.get(i).getNombre().equals((String)comboBox2.getSelectedItem())){
 						 a = arrayAutos.get(i).getId(); }}
 				for (int j=0;j<arrayAutos.size();j++){
-					if(arrayAutos.get(j).getTipo().getId()==a){
+					if(arrayAutos.get(j).getId()==a){
 						au=arrayAutos.get(j);
 					}
 				}
@@ -187,5 +188,8 @@ public class ABMReserva extends JFrame {
 	contentPane.add(btnVerificarFecha);
 	
 }
+
+
+	
+	
 }
-//dada
