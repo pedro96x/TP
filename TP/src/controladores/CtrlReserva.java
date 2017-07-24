@@ -25,6 +25,7 @@ public class CtrlReserva {
 		ArrayList <Reserva> reservas = dataRes.getReservas();
 		ArrayList <Auto> autosDisponibles = new ArrayList <Auto>();
 		
+		if(reservas.size()>0){
 		for (int i = 0; i < reservas.size(); i++) {
 			for (int j = 0; j < arrayMismoTipoAutos.size(); j++) {
 				if(arrayMismoTipoAutos.get(j).equals(reservas.get(i).getAutoReservado())){
@@ -40,9 +41,17 @@ public class CtrlReserva {
 				}
 				else{
 					autosDisponibles.add(arrayMismoTipoAutos.get(j));
+					System.out.println("no hay de este auto");
 				}
 			}
 			
+		}
+		}
+		else{
+			for (int i = 0; i < arrayMismoTipoAutos.size(); i++) {
+				autosDisponibles.add(arrayMismoTipoAutos.get(i));
+				System.out.println("no hay nada en reserva");
+			}
 		}
 		return autosDisponibles;
 	}

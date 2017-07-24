@@ -174,7 +174,7 @@ public class ABMReserva extends JFrame {
 					}
 				}
 				ArrayList<Auto> autosDisponibles = new ArrayList<Auto>();
-						autosDisponibles=controladorReserva.getAutosDisponibles(txtFechaIni.getText(), txtFechaFin.getText(),arrayMismoTipoAutos  );
+						autosDisponibles=controladorReserva.getAutosDisponibles(txtFechaIni.getText(), txtFechaFin.getText(),arrayMismoTipoAutos);
 
 		
 						for(int k=0;k<autosDisponibles.size();k++){
