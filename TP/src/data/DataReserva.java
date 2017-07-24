@@ -59,8 +59,8 @@ public class DataReserva {
 		rs = stmt.executeQuery();
 			if (rs != null && rs.next()){
 				reserva = new Reserva();
-				reserva.setFechaIni(rs.getDate("fechafin"));
-				reserva.setFechaFin(rs.getDate("fechain"));
+				reserva.setFechaIni(rs.getDate("fechain"));
+				reserva.setFechaFin(rs.getDate("fechafin"));
 				reserva.setDetalle(rs.getString("detalle"));
 				auto.setId(rs.getInt("auto_reservado"));
 				reserva.setAutoReservado(auto);
