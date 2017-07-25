@@ -16,8 +16,7 @@ public class CtrlReserva {
 		
 	
 		public void setReserva(Reserva res) {
-
-					dataRes.setReserva(res);
+			dataRes.setReserva(res);
 	}
 
 	
@@ -27,6 +26,7 @@ public class CtrlReserva {
 		ArrayList <Auto> autosDisponibles = new ArrayList <Auto>();
 		
 		if(reservas.size()>0){
+			
 		for (int i = 0; i < reservas.size(); i++) {
 			for (int j = 0; j < arrayMismoTipoAutos.size(); j++) {
 				if(arrayMismoTipoAutos.get(j).getId()==reservas.get(i).getAutoReservado().getId()){

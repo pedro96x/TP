@@ -88,6 +88,8 @@ public class Login extends JFrame {
 						menu.setPersona(per);
 						
 						
+						
+						
 						}
 					
 							
@@ -111,7 +113,6 @@ public class Login extends JFrame {
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 	}
-//	public void incorrecto(){
-//	JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
+
 	
 }

@@ -7,6 +7,7 @@ public class Reserva {
 	Auto autoReservado;
 	java.sql.Date fechaIni;
 	java.sql.Date fechaFin;
+	int idPersona;
 	
 	public java.sql.Date getFechaIni() {
 		return fechaIni;
@@ -43,5 +44,13 @@ public class Reserva {
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
 	}
+	public int getIdPersona() {
+		return idPersona;
+	}
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
+	
+	
 	
 }

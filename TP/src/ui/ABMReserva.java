@@ -3,6 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,7 +31,7 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 
 public class ABMReserva extends JFrame {
-	Persona per;
+	int idPersona;
 	private JPanel contentPane;
 	private JTextField txtFechaIni;
 	private JTextField txtFechaFin;
@@ -150,6 +151,8 @@ public class ABMReserva extends JFrame {
 				res.setFechaFin(Date.valueOf(txtFechaFin.getText()));
 				res.setDetalle(txtDetalle.getText());
 				
+				res.setIdPersona(idPersona);
+				
 				controladorReserva.setReserva(res);
 				}
 
@@ -176,7 +179,10 @@ public class ABMReserva extends JFrame {
 				}
 				ArrayList<Auto> autosDisponibles = new ArrayList<Auto>();
 						autosDisponibles=controladorReserva.getAutosDisponibles(txtFechaIni.getText(), txtFechaFin.getText(),arrayMismoTipoAutos);
-
+						
+						 
+						
+						autosDisponibles = new ArrayList<Auto>(new HashSet<Auto>(autosDisponibles));//Esta sentencia elimina los autos duplicados del array
 		
 						for(int k=0;k<autosDisponibles.size();k++){
 							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}
@@ -188,6 +194,22 @@ public class ABMReserva extends JFrame {
 	contentPane.add(btnVerificarFecha);
 	
 }
+
+	public int getIdPersona() {
+		return idPersona;
+	}
+
+	
+
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+		
+	}
+
+	public void setPersona(int idPersona2) {
+		setIdPersona(idPersona2);
+		
+	}
 
 
 	

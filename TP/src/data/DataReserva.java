@@ -3,6 +3,7 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import entidades.Auto;
@@ -16,14 +17,14 @@ public class DataReserva {
 		
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"insert into reservas(fechain,fechafin,detalle,auto_reservado) values(?,?,?,?)",
+					"insert into reservas (fechain,fechafin,detalle,auto_reservado,id_persona) values(?,?,?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			stmt.setDate(1,res.getFechaIni());
 			stmt.setDate(2,res.getFechaFin());
 			stmt.setString(3,res.getDetalle());
 			stmt.setInt(4,res.getAutoReservado().getId());
-			
+			stmt.setInt(5,res.getIdPersona());
 			
 			
 			 stmt.executeUpdate();
@@ -45,43 +46,44 @@ public class DataReserva {
 
 }
 
-	public ArrayList<Reserva> getReservas() {
-		// Este metodo teiene de devolver un arraylist de todas las reservas de este tipo 
+	public ArrayList<Reserva> getReservas(){
 		
-		Reserva reserva = null;
-		ArrayList<Reserva> reservas = new ArrayList<Reserva>();
-		Auto auto = new Auto();
-		ResultSet rs = null;
-		PreparedStatement stmt = null;
-		
-		try{
-			stmt = FactoryConexion.getInstancia().getConn().prepareStatement(
-					"select auto_reservado,fechain, fechafin,detalle FROM tp.reservas");
-		rs = stmt.executeQuery();
-			if (rs != null && rs.next()){
-				reserva = new Reserva();
-				reserva.setFechaIni(rs.getDate("fechain"));
-				reserva.setFechaFin(rs.getDate("fechafin"));
-				reserva.setDetalle(rs.getString("detalle"));
-				auto.setId(rs.getInt("auto_reservado"));
-				reserva.setAutoReservado(auto);
-				
-				reservas.add(reserva);
+		Statement stmt=null;
+		ResultSet rs=null;
+		ArrayList<Reserva> reservas= new ArrayList<Reserva>();
+		try {
+			stmt = FactoryConexion.getInstancia()
+					.getConn().createStatement();
+			rs = stmt.executeQuery("select * from tp.reservas");
+			if(rs!=null){
+				while(rs.next()){
+					Reserva res=new Reserva();
+					res.setFechaIni(rs.getDate("fechain"));
+					res.setFechaFin(rs.getDate("fechafin"));
+					res.setDetalle(rs.getString("detalle"));
+					Auto au = new Auto();
+					au.setId(rs.getInt("auto_reservado"));
+					res.setAutoReservado(au);
+					res.setIdPersona(rs.getInt("id_persona"));
+					reservas.add(res);
+				}
 			}
-		} catch (SQLException e){
+		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		}
 		
-		try{
-			if(rs != null) rs.close();
-			if(stmt != null) stmt.close();
+
+		try {
+			if(rs!=null) rs.close();
+			if(stmt!=null) stmt.close();
 			FactoryConexion.getInstancia().releaseConn();
-		} catch (SQLException e){
+		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		}
 		
 		return reservas;
-		
 		
 	}}
 //pongo este comentario para poder comitiar

@@ -18,7 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class Menu extends JFrame {
-
+	
+	int idPersona;
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
@@ -104,17 +105,38 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ABMReserva gestRes = new ABMReserva();
 				gestRes.setVisible(true);
+				gestRes.setPersona(getIdPersona());
 				
 			}
 		});
 		btnGestionarReservas.setBounds(142, 277, 502, 33);
 		contentPane.add(btnGestionarReservas);
+		
+		JButton btnMisReservas = new JButton("Mis Reservas");
+		btnMisReservas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MisReservas mr = new MisReservas();
+				mr.setPersona(idPersona);
+				mr.setVisible(true);
+				
+			}
+		});
+		btnMisReservas.setBounds(142, 357, 502, 33);
+		contentPane.add(btnMisReservas);
 	}
 
 	public void setPersona(Persona per) {
 		textFieldNombre.setText(per.getNombre());
 		textFieldApellido.setText(per.getApellido());
+		setIdPersona(per.getId());
 		
 	}
-	
+
+	public int getIdPersona() {
+		return idPersona;
+	}
+
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
 }
