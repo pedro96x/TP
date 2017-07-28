@@ -19,13 +19,28 @@ import java.awt.Font;
 
 public class Menu extends JFrame {
 	
-	int idPersona;
+	public int idPersona;
+	public int getIdPersona() {
+		return idPersona;
+	}
+
+	
+	
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
+	private JTextField textFieldID;
 	
-
-
+	public void setPersona(Persona per) {
+		textFieldNombre.setText(per.getNombre());
+		textFieldApellido.setText(per.getApellido());
+		textFieldID.setText(String.valueOf(per.getId()));
+		this.setIdPersona(per.getId());
+		
+	}
+public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -116,27 +131,21 @@ public class Menu extends JFrame {
 		btnMisReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MisReservas mr = new MisReservas();
-				mr.setPersona(idPersona);
+			mr.setIdPersona(idPersona);
 				mr.setVisible(true);
 				
 			}
 		});
 		btnMisReservas.setBounds(142, 357, 502, 33);
 		contentPane.add(btnMisReservas);
-	}
-
-	public void setPersona(Persona per) {
-		textFieldNombre.setText(per.getNombre());
-		textFieldApellido.setText(per.getApellido());
-		setIdPersona(per.getId());
 		
+		textFieldID = new JTextField();
+		textFieldID.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textFieldID.setEditable(false);
+		textFieldID.setColumns(10);
+		textFieldID.setBounds(432, 11, 101, 20);
+		contentPane.add(textFieldID);
 	}
 
-	public int getIdPersona() {
-		return idPersona;
-	}
-
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
-	}
+	
 }

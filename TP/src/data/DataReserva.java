@@ -85,7 +85,49 @@ public class DataReserva {
 		
 		return reservas;
 		
-	}}
+	}
+
+	public ArrayList<Reserva> getReservasByIdPersona(int id) {
+		PreparedStatement stmt = null;
+		ResultSet rs=null;
+		ArrayList<Reserva> reservas= new ArrayList<Reserva>();
+		try {
+			stmt = FactoryConexion.getInstancia()
+					.getConn().prepareStatement("select * from tp.reservas where id_persona = ?");
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			if(rs!=null){
+				while(rs.next()){
+					Reserva res=new Reserva();
+					res.setFechaIni(rs.getDate("fechain"));
+					res.setFechaFin(rs.getDate("fechafin"));
+					res.setDetalle(rs.getString("detalle"));
+					Auto au = new Auto();
+					au.setId(rs.getInt("auto_reservado"));
+					res.setAutoReservado(au);
+//					res.setIdPersona(rs.getInt("id_persona"));
+					reservas.add(res);
+				}
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+
+		try {
+			if(rs!=null) rs.close();
+			if(stmt!=null) stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return reservas;
+		
+	}
+	}
 //pongo este comentario para poder comitiar
 
 	

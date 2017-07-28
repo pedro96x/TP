@@ -14,6 +14,9 @@ public class CtrlReserva {
 		DataReserva dataRes = new DataReserva();
 		DataAuto dataAuto = new DataAuto();
 		
+		public ArrayList<Reserva> getReservas(){	
+			return dataRes.getReservas();
+			}
 	
 		public void setReserva(Reserva res) {
 			dataRes.setReserva(res);
@@ -55,6 +58,10 @@ public class CtrlReserva {
 			}
 		}
 		return autosDisponibles;
+	}
+
+	public ArrayList<Reserva> getReservasByIdPersona(int id) {
+		return dataRes.getReservasByIdPersona(id);
 	}
 	
 }//dada

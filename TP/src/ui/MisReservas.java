@@ -1,17 +1,16 @@
 package ui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import controladores.CtrlReserva;
 import data.DataReserva;
 import entidades.Reserva;
+import tablas.TablaReservas;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -24,12 +23,27 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.border.CompoundBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class MisReservas extends JFrame {
-	int idPersona;
-	DataReserva dataRes = new DataReserva();
-	private JPanel contentPane;
+	public int idPersona;
+	public int getIdPersona() {
+		return idPersona;
+	}
 
+	public void setIdPersona(int idPersona) {
+		this.idPersona = idPersona;
+	}
+
+//	DataReserva dataRes = new DataReserva();
+	CtrlReserva ctrlReserva = new CtrlReserva();
+	private JPanel contentPane;
+	private JTable table;
+//	ArrayList<Reserva> reservas = ctrlReserva.getReservas();
+	ArrayList<Reserva> reservas = ctrlReserva.getReservasByIdPersona(idPersona);
 
 	/**
 	 * Launch the application.
@@ -52,60 +66,48 @@ public class MisReservas extends JFrame {
 	 */
 	public MisReservas() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 510, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(109, 65, 328, 138);
+		contentPane.add(scrollPane);
+		
+		Object nombreColumnas[] = { "fecha in", "fecha fin", "detalle ", "id de auto"};
+		Object datos[][] = new String[reservas.size()][nombreColumnas.length]; 
 		
 		
+		for (int x = 0; x < reservas.size(); x++) {
+			
+			datos [x][0] = String.valueOf(reservas.get(x).getFechaIni());
+			
+			datos [x][1] = String.valueOf(reservas.get(x).getFechaFin());
+			
+			datos [x][2] = reservas.get(x).getDetalle();
+			
+			datos [x][3] = String.valueOf(reservas.get(x).getAutoReservado().getId());
+			
+						
+			
+		
+		}
+		
+		
+		table = new JTable();
+		table.setModel(
+				new DefaultTableModel(datos,nombreColumnas));
+		
+		scrollPane.setViewportView(table);
+		
+		
+
+		
+		
+		
+	}
+
 	
-		
-		
-		
-		JButton btnMostrarReservas = new JButton("Mostrar Reservas");
-		btnMostrarReservas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<Reserva> reservas = dataRes.getReservas();
-				
-				for (int i = 0; i < reservas.size(); i++) {
-				if(reservas.get(i).getIdPersona()==getIdPersona()){
-					
-				}
-				
-					
-				
-			}
-			}
-		});
-		btnMostrarReservas.setBounds(44, 5, 355, 23);
-		contentPane.add(btnMostrarReservas);
-		
-		JList list = new JList();
-		list.setBounds(44, 39, 355, 211);
-		contentPane.add(list);
-		
-		
-		
-		
-		
-
-		
-		
-		
-	}
-
-	public void setPersona(int idPers) {
-		setIdPersona(idPers);
-		
-	}
-
-	public int getIdPersona() {
-		return idPersona;
-	}
-
-	public void setIdPersona(int idPersona) {
-		this.idPersona = idPersona;
-	}
 }
