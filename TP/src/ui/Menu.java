@@ -130,8 +130,7 @@ public void setIdPersona(int idPersona) {
 		JButton btnMisReservas = new JButton("Mis Reservas");
 		btnMisReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MisReservas mr = new MisReservas();
-			mr.setIdPersona(idPersona);
+				MisReservas mr = new MisReservas(idPersona);
 				mr.setVisible(true);
 				
 			}

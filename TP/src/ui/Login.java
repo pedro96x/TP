@@ -81,7 +81,7 @@ public class Login extends JFrame {
 				if (per == null){JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
 				
 				if(per!=null){
-						JOptionPane.showMessageDialog(contentPane, "Login realizado exitosamente");
+						
 						
 						Menu menu = new Menu();
 						menu.setVisible(true);

@@ -43,29 +43,14 @@ public class MisReservas extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 //	ArrayList<Reserva> reservas = ctrlReserva.getReservas();
-	ArrayList<Reserva> reservas = ctrlReserva.getReservasByIdPersona(idPersona);
+	ArrayList<Reserva> reservas = null; 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MisReservas frame = new MisReservas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public MisReservas() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public MisReservas(int idPersona) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 510, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -75,11 +60,13 @@ public class MisReservas extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(109, 65, 328, 138);
 		contentPane.add(scrollPane);
+		this.setIdPersona(idPersona);
+		reservas = ctrlReserva.getReservasByIdPersona(idPersona);
 		
-		Object nombreColumnas[] = { "fecha in", "fecha fin", "detalle ", "id de auto"};
+		Object nombreColumnas[] = { "Fecha Inicio", "Fecha Fin", "Detalle ", "Id de Auto"};
 		Object datos[][] = new String[reservas.size()][nombreColumnas.length]; 
 		
-		
+
 		for (int x = 0; x < reservas.size(); x++) {
 			
 			datos [x][0] = String.valueOf(reservas.get(x).getFechaIni());
