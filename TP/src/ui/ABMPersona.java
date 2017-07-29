@@ -40,26 +40,7 @@ public class ABMPersona extends JFrame {
 	private JTextField txtUser;
 	private JTextField txtPass;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ABMPersona frame = new ABMPersona();
-					frame.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ABMPersona() {
 		setTitle("ABMC Usuarios");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

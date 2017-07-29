@@ -106,10 +106,12 @@ public class Login extends JFrame {
 		contentPane.add(label);
 		
 		passFieldPass = new JPasswordField();
+		passFieldPass.setEchoChar('*');
 		passFieldPass.setBounds(105, 173, 213, 20);
 		contentPane.add(passFieldPass);
 		
 		txtUser = new JTextField();
+		txtUser.setText("admin");
 		txtUser.setBounds(105, 131, 213, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);

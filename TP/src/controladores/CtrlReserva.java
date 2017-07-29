@@ -60,8 +60,8 @@ public class CtrlReserva {
 		return autosDisponibles;
 	}
 
-	public ArrayList<Reserva> getReservasByIdPersona(int id) {
-		return dataRes.getReservasByIdPersona(id);
+	public ArrayList<Reserva> getReservasAFututoByIdPersona(int id) {
+		return dataRes.getReservasAFututoByIdPersona(id);
 	}
 	
 }//dada

@@ -29,37 +29,19 @@ public class Menu extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
-	private JTextField textFieldID;
 	
 	public void setPersona(Persona per) {
 		textFieldNombre.setText(per.getNombre());
 		textFieldApellido.setText(per.getApellido());
-		textFieldID.setText(String.valueOf(per.getId()));
+		
 		this.setIdPersona(per.getId());
 		
 	}
 public void setIdPersona(int idPersona) {
 		this.idPersona = idPersona;
 	}
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Menu frame = new Menu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public Menu() {
 		setTitle("Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,13 +119,6 @@ public void setIdPersona(int idPersona) {
 		});
 		btnMisReservas.setBounds(142, 357, 502, 33);
 		contentPane.add(btnMisReservas);
-		
-		textFieldID = new JTextField();
-		textFieldID.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textFieldID.setEditable(false);
-		textFieldID.setColumns(10);
-		textFieldID.setBounds(432, 11, 101, 20);
-		contentPane.add(textFieldID);
 	}
 
 	

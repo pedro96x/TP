@@ -37,25 +37,7 @@ public class ABMTipoAuto extends JFrame {
 	private JLabel lblDias;
 	private JTextField txtBuscaID;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ABMTipoAuto frame = new ABMTipoAuto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ABMTipoAuto() {
 		setTitle("ABM Tipo de Auto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

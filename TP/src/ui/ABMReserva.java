@@ -37,25 +37,7 @@ public class ABMReserva extends JFrame {
 	private JTextField txtFechaFin;
 	private JTextField txtDetalle;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ABMReserva frame = new ABMReserva();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ABMReserva() {
 		CtrlReserva controladorReserva=new CtrlReserva();
 		CtrlTipoAuto controladorTipoAuto = new CtrlTipoAuto();

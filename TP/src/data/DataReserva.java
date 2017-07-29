@@ -87,13 +87,13 @@ public class DataReserva {
 		
 	}
 
-	public ArrayList<Reserva> getReservasByIdPersona(int id) {
+	public ArrayList<Reserva> getReservasAFututoByIdPersona(int id) {
 		PreparedStatement stmt = null;
 		ResultSet rs=null;
 		ArrayList<Reserva> reservas= new ArrayList<Reserva>();
 		try {
 			stmt = FactoryConexion.getInstancia()
-					.getConn().prepareStatement("select * from tp.reservas where id_persona = ?");
+					.getConn().prepareStatement("select * from tp.reservas where id_persona = ? and fechain>curdate()");
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			if(rs!=null){

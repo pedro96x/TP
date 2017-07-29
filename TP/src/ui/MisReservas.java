@@ -38,30 +38,29 @@ public class MisReservas extends JFrame {
 		this.idPersona = idPersona;
 	}
 
-//	DataReserva dataRes = new DataReserva();
+
 	CtrlReserva ctrlReserva = new CtrlReserva();
 	private JPanel contentPane;
 	private JTable table;
-//	ArrayList<Reserva> reservas = ctrlReserva.getReservas();
+
 	ArrayList<Reserva> reservas = null; 
 
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public MisReservas(int idPersona) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 510, 336);
+		setBounds(100, 100, 514, 336);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(109, 65, 328, 138);
+		scrollPane.setBounds(46, 11, 363, 217);
 		contentPane.add(scrollPane);
 		this.setIdPersona(idPersona);
-		reservas = ctrlReserva.getReservasByIdPersona(idPersona);
+		reservas = ctrlReserva.getReservasAFututoByIdPersona(idPersona);//Este método devuelve un array con las reservas realizadas 
+																		//por la persona logeada con fechain posteriror a la fecha actual.
 		
 		Object nombreColumnas[] = { "Fecha Inicio", "Fecha Fin", "Detalle ", "Id de Auto"};
 		Object datos[][] = new String[reservas.size()][nombreColumnas.length]; 
@@ -89,12 +88,24 @@ public class MisReservas extends JFrame {
 		
 		scrollPane.setViewportView(table);
 		
+		JButton btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnAtras.setBounds(46, 251, 89, 23);
+		contentPane.add(btnAtras);
+		
+		JButton btnCancelarReserva = new JButton("Cancelar Reserva");
+		btnCancelarReserva.setForeground(Color.RED);
+		btnCancelarReserva.setBounds(265, 251, 144, 23);
+		contentPane.add(btnCancelarReserva);
+		
 		
 
 		
 		
 		
 	}
-
-	
 }

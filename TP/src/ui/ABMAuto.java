@@ -40,25 +40,7 @@ public class ABMAuto extends JFrame {
 	private JButton btnAtras;
 	private JLabel lblBuscarPorId;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ABMAuto frame = new ABMAuto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ABMAuto() {
 		
 		CtrlAuto controlador = new CtrlAuto();
