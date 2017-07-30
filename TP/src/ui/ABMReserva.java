@@ -9,6 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+
 import controladores.CtrlAuto;
 import controladores.CtrlReserva;
 import controladores.CtrlTipoAuto;
@@ -29,16 +34,19 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class ABMReserva extends JFrame {
 	int idPersona;
 	private JPanel contentPane;
 	private JTextField txtFechaIni;
-	private JTextField txtFechaFin;
 	private JTextField txtDetalle;
+	private JTextField txtFechaFin;
+	private JTextField txtResultado;
 
 
 	public ABMReserva() {
+		
 		CtrlReserva controladorReserva=new CtrlReserva();
 		CtrlTipoAuto controladorTipoAuto = new CtrlTipoAuto();
 		CtrlAuto controladorAuto = new  CtrlAuto();
@@ -81,18 +89,14 @@ public class ABMReserva extends JFrame {
 		contentPane.add(lblFecha);
 		
 		txtFechaIni = new JTextField();
+		txtFechaIni.setToolTipText("");
 		txtFechaIni.setBounds(115, 42, 68, 20);
 		contentPane.add(txtFechaIni);
 		txtFechaIni.setColumns(10);
 		
-		txtFechaFin = new JTextField();
-		txtFechaFin.setBounds(323, 42, 62, 20);
-		contentPane.add(txtFechaFin);
-		txtFechaFin.setColumns(10);
-		
 		JLabel lblHora = new JLabel("Fecha fin:");
 		lblHora.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblHora.setBounds(236, 45, 77, 14);
+		lblHora.setBounds(177, 42, 85, 17);
 		contentPane.add(lblHora);
 		
 		txtDetalle = new JTextField();
@@ -136,20 +140,32 @@ public class ABMReserva extends JFrame {
 				res.setIdPersona(idPersona);
 				
 				controladorReserva.setReserva(res);
+				txtResultado.setText("Registrado");
 				}
 
 			
 		});
-		btnReservar.setBounds(335, 227, 89, 23);
+		btnReservar.setBounds(269, 227, 89, 23);
 		contentPane.add(btnReservar);
 		
 		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
 		btnAtras.setBounds(10, 227, 89, 23);
 		contentPane.add(btnAtras);
 		
 		JButton btnVerificarFecha = new JButton("Verificar fecha");
 		btnVerificarFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+				 
+				if(formatter.parseDateTime(txtFechaIni.getText()).isBefore(new DateTime(DateTimeZone.UTC))){
+					JOptionPane.showMessageDialog(contentPane,"La fecha ingresada es anterior a la fecha actual");
+				}
+				else{
 				int a=0;
 				for (int i=0;i<arrayTiposAutos.size();i++){
 					if (arrayTiposAutos.get(i).getNombre().equals(comboBox.getSelectedItem())){
@@ -169,11 +185,32 @@ public class ABMReserva extends JFrame {
 						for(int k=0;k<autosDisponibles.size();k++){
 							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}
 							 
-				 }
+				 }}
 		
 	});
 	btnVerificarFecha.setBounds(369, 166, 125, 23);
 	contentPane.add(btnVerificarFecha);
+	
+	txtFechaFin = new JTextField();
+	txtFechaFin.setColumns(10);
+	txtFechaFin.setBounds(272, 42, 68, 20);
+	contentPane.add(txtFechaFin);
+	
+	txtResultado = new JTextField();
+	txtResultado.setEditable(false);
+	txtResultado.setBounds(434, 228, 70, 20);
+	contentPane.add(txtResultado);
+	txtResultado.setColumns(10);
+	
+	JLabel lblResultado = new JLabel("Resultado:");
+	lblResultado.setFont(new Font("Tahoma", Font.BOLD, 11));
+	lblResultado.setBounds(368, 231, 68, 14);
+	contentPane.add(lblResultado);
+	
+	JLabel lblAaaammdd = new JLabel("aaaa-mm-dd");
+	lblAaaammdd.setFont(new Font("Tahoma", Font.BOLD, 11));
+	lblAaaammdd.setBounds(369, 45, 74, 14);
+	contentPane.add(lblAaaammdd);
 	
 }
 
@@ -192,8 +229,4 @@ public class ABMReserva extends JFrame {
 		setIdPersona(idPersona2);
 		
 	}
-
-
-	
-	
 }

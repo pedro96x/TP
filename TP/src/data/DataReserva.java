@@ -99,6 +99,7 @@ public class DataReserva {
 			if(rs!=null){
 				while(rs.next()){
 					Reserva res=new Reserva();
+					res.setId(rs.getInt("id"));
 					res.setFechaIni(rs.getDate("fechain"));
 					res.setFechaFin(rs.getDate("fechafin"));
 					res.setDetalle(rs.getString("detalle"));
@@ -127,7 +128,32 @@ public class DataReserva {
 		return reservas;
 		
 	}
+
+	public void deleteById(int id) {
+		PreparedStatement stmt=null;
+		
+		
+		try {
+			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+					"delete from reservas where id=?");
+			
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			
+			if(stmt!=null)stmt.close();
+			FactoryConexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
-//pongo este comentario para poder comitiar
+	}
 
 	
