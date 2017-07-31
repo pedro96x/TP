@@ -34,7 +34,8 @@ public class CtrlReserva {
 			for (int j = 0; j < arrayMismoTipoAutos.size(); j++) {
 				if(arrayMismoTipoAutos.get(j).getId()==reservas.get(i).getAutoReservado().getId()){
 					if(NuevoDate.seSolapan(reservas.get(i).getFechaIni(),reservas.get(i).getFechaFin(),fechaI,fechaF)){
-						boolean q=NuevoDate.seSolapan(reservas.get(i).getFechaIni(),reservas.get(i).getFechaFin(),fechaI,fechaF);
+						System.out.println("se solapan");
+						
 						
 					}
 					else{
@@ -57,6 +58,18 @@ public class CtrlReserva {
 				
 			}
 		}
+		
+		
+		int cont=0;
+		for (int i = 0; i < autosDisponibles.size(); i++) {
+			for (int j = 0; j < autosDisponibles.size(); j++) {
+				if(autosDisponibles.get(j).equals(autosDisponibles.get(i))){
+					cont++;
+				}
+				if(cont!=reservas.size()){
+					autosDisponibles.remove(autosDisponibles.get(j));
+				}
+		}}
 		return autosDisponibles;
 	}
 
