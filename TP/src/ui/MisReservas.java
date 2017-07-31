@@ -56,7 +56,7 @@ public class MisReservas extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(46, 11, 363, 217);
+		scrollPane.setBounds(31, 11, 443, 217);
 		contentPane.add(scrollPane);
 		this.setIdPersona(idPersona);
 		reservas = ctrlReserva.getReservasAFututoByIdPersona(idPersona);//Este método devuelve un array con las reservas realizadas 
@@ -96,7 +96,7 @@ public class MisReservas extends JFrame {
 				dispose();
 			}
 		});
-		btnAtras.setBounds(46, 251, 89, 23);
+		btnAtras.setBounds(31, 251, 89, 23);
 		contentPane.add(btnAtras);
 		
 		JButton btnCancelarReserva = new JButton("Cancelar Reserva");
@@ -116,7 +116,7 @@ public class MisReservas extends JFrame {
 			}
 		});
 		btnCancelarReserva.setForeground(Color.RED);
-		btnCancelarReserva.setBounds(265, 251, 144, 23);
+		btnCancelarReserva.setBounds(330, 251, 144, 23);
 		contentPane.add(btnCancelarReserva);
 		
 		

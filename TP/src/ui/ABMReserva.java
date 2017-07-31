@@ -180,7 +180,7 @@ public class ABMReserva extends JFrame {
 						
 						 
 						
-						autosDisponibles = new ArrayList<Auto>(new HashSet<Auto>(autosDisponibles));//Esta sentencia elimina los autos duplicados del array
+//						autosDisponibles = new ArrayList<Auto>(new HashSet<Auto>(autosDisponibles));//Esta sentencia elimina los autos duplicados del array
 		
 						for(int k=0;k<autosDisponibles.size();k++){
 							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}
