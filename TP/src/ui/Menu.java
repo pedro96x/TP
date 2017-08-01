@@ -69,6 +69,7 @@ public void setIdPersona(int idPersona) {
 		textFieldApellido.setColumns(10);
 		
 		JButton btnGestionarPersonas = new JButton("Gestionar Personas");
+		btnGestionarPersonas.setFont(new Font("Consolas", Font.BOLD, 12));
 		btnGestionarPersonas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ABMPersona gestPers = new ABMPersona();
@@ -81,6 +82,7 @@ public void setIdPersona(int idPersona) {
 		contentPane.add(btnGestionarPersonas);
 		
 		JButton btnGestionarTiposDe = new JButton("Gestionar Tipos de Auto");
+		btnGestionarTiposDe.setFont(new Font("Consolas", Font.BOLD, 12));
 		btnGestionarTiposDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ABMTipoAuto gestTipo = new ABMTipoAuto();
@@ -91,6 +93,7 @@ public void setIdPersona(int idPersona) {
 		contentPane.add(btnGestionarTiposDe);
 		
 		JButton btnGestionarAuto = new JButton("Gestionar Autos");
+		btnGestionarAuto.setFont(new Font("Consolas", Font.BOLD, 12));
 		btnGestionarAuto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ABMAuto gestAuto = new ABMAuto();
@@ -101,6 +104,7 @@ public void setIdPersona(int idPersona) {
 		contentPane.add(btnGestionarAuto);
 		
 		JButton btnGestionarReservas = new JButton("Gestionar Reservas");
+		btnGestionarReservas.setFont(new Font("Consolas", Font.BOLD, 12));
 		btnGestionarReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ABMReserva gestRes = new ABMReserva();
@@ -113,6 +117,7 @@ public void setIdPersona(int idPersona) {
 		contentPane.add(btnGestionarReservas);
 		
 		JButton btnMisReservas = new JButton("Mis Reservas");
+		btnMisReservas.setFont(new Font("Consolas", Font.BOLD, 12));
 		btnMisReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MisReservas mr = new MisReservas(idPersona);

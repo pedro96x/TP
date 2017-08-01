@@ -20,6 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Canvas;
+import java.awt.Font;
 
 public class Login extends JFrame {
 	/**
@@ -55,23 +58,27 @@ public class Login extends JFrame {
 	public Login() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 323, 132);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblUser = new JLabel("User:");
+		lblUser.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblUser.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblUser.setBounds(10, 134, 65, 14);
+		lblUser.setBounds(0, 14, 46, 14);
 		contentPane.add(lblUser);
 		
 		JLabel lblPass = new JLabel("Pass:");
+		lblPass.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblPass.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPass.setBounds(10, 173, 65, 14);
+		lblPass.setBounds(0, 56, 46, 14);
 		contentPane.add(lblPass);
 		
 		JButton btnIngresar = new JButton("Ingresar");
+		btnIngresar.setFont(new Font("Consolas", Font.PLAIN, 12));
 		btnIngresar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
@@ -100,7 +107,7 @@ public class Login extends JFrame {
 				
 			}
 		});
-		btnIngresar.setBounds(335, 172, 89, 23);
+		btnIngresar.setBounds(194, 52, 103, 23);
 		contentPane.add(btnIngresar);
 		
 		JLabel label = new JLabel("-");
@@ -109,16 +116,16 @@ public class Login extends JFrame {
 		contentPane.add(label);
 		
 		passFieldPass = new JPasswordField();
+		passFieldPass.setFont(new Font("Consolas", Font.PLAIN, 12));
 		passFieldPass.setEchoChar('*');
-		passFieldPass.setBounds(105, 173, 213, 20);
+		passFieldPass.setBounds(56, 56, 108, 20);
 		contentPane.add(passFieldPass);
 		
 		txtUser = new JTextField();
+		txtUser.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtUser.setText("admin");
-		txtUser.setBounds(105, 131, 213, 20);
+		txtUser.setBounds(56, 14, 108, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
 	}
-
-	
 }

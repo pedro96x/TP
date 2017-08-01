@@ -65,6 +65,7 @@ public class ABMReserva extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setFont(new Font("Consolas", Font.PLAIN, 11));
 		comboBox.setToolTipText("Tipo");
 		comboBox.setBounds(66, 11, 292, 20);
 		comboBox.addItem("Seleccione tipo ");
@@ -79,38 +80,45 @@ public class ABMReserva extends JFrame {
 		contentPane.add(comboBox);
 		
 		JLabel label = new JLabel("Tipo:");
+		label.setFont(new Font("Consolas", Font.PLAIN, 11));
 		label.setHorizontalAlignment(SwingConstants.RIGHT);
 		label.setBounds(10, 14, 46, 14);
 		contentPane.add(label);
 		
 		JLabel lblFecha = new JLabel("Fecha inicio:");
+		lblFecha.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblFecha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblFecha.setBounds(10, 45, 95, 14);
 		contentPane.add(lblFecha);
 		
 		txtFechaIni = new JTextField();
+		txtFechaIni.setFont(new Font("Consolas", Font.PLAIN, 11));
 		txtFechaIni.setToolTipText("");
 		txtFechaIni.setBounds(115, 42, 68, 20);
 		contentPane.add(txtFechaIni);
 		txtFechaIni.setColumns(10);
 		
 		JLabel lblHora = new JLabel("Fecha fin:");
+		lblHora.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblHora.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblHora.setBounds(177, 42, 85, 17);
 		contentPane.add(lblHora);
 		
 		txtDetalle = new JTextField();
+		txtDetalle.setFont(new Font("Consolas", Font.PLAIN, 11));
 		txtDetalle.setHorizontalAlignment(SwingConstants.LEFT);
 		txtDetalle.setBounds(66, 139, 292, 17);
 		contentPane.add(txtDetalle);
 		txtDetalle.setColumns(10);
 		
 		JLabel lblDetalle = new JLabel("Detalle:");
+		lblDetalle.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblDetalle.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblDetalle.setBounds(10, 141, 46, 14);
+		lblDetalle.setBounds(0, 141, 56, 14);
 		contentPane.add(lblDetalle);
 		
 		JComboBox<String> comboBox2 = new JComboBox<String>();
+		comboBox2.setFont(new Font("Consolas", Font.PLAIN, 11));
 		comboBox2.setBounds(66, 167, 292, 20);
 		
 
@@ -119,6 +127,7 @@ public class ABMReserva extends JFrame {
 		contentPane.add(comboBox2);
 		
 		JButton btnReservar = new JButton("Reservar");
+		btnReservar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnReservar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Reserva res = new Reserva();
@@ -148,7 +157,8 @@ public class ABMReserva extends JFrame {
 		btnReservar.setBounds(269, 227, 89, 23);
 		contentPane.add(btnReservar);
 		
-		JButton btnAtras = new JButton("Atras");
+		JButton btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -158,6 +168,7 @@ public class ABMReserva extends JFrame {
 		contentPane.add(btnAtras);
 		
 		JButton btnVerificarFecha = new JButton("Verificar fecha");
+		btnVerificarFecha.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnVerificarFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
@@ -195,18 +206,20 @@ public class ABMReserva extends JFrame {
 	contentPane.add(btnVerificarFecha);
 	
 	txtFechaFin = new JTextField();
+	txtFechaFin.setFont(new Font("Consolas", Font.PLAIN, 11));
 	txtFechaFin.setColumns(10);
 	txtFechaFin.setBounds(272, 42, 68, 20);
 	contentPane.add(txtFechaFin);
 	
 	txtResultado = new JTextField();
+	txtResultado.setFont(new Font("Consolas", Font.PLAIN, 11));
 	txtResultado.setEditable(false);
 	txtResultado.setBounds(434, 228, 70, 20);
 	contentPane.add(txtResultado);
 	txtResultado.setColumns(10);
 	
 	JLabel lblResultado = new JLabel("Resultado:");
-	lblResultado.setFont(new Font("Tahoma", Font.BOLD, 11));
+	lblResultado.setFont(new Font("Consolas", Font.PLAIN, 11));
 	lblResultado.setBounds(368, 231, 68, 14);
 	contentPane.add(lblResultado);
 	
@@ -216,6 +229,7 @@ public class ABMReserva extends JFrame {
 	contentPane.add(lblAaaammdd);
 	
 	JButton btnLimpiar = new JButton("Limpiar");
+	btnLimpiar.setFont(new Font("Consolas", Font.PLAIN, 11));
 	btnLimpiar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			

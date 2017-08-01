@@ -58,26 +58,31 @@ public class ABMAuto extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtDescripcion = new JTextField();
+		txtDescripcion.setFont(new Font("Consolas", Font.PLAIN, 11));
 		txtDescripcion.setBounds(132, 11, 292, 20);
 		contentPane.add(txtDescripcion);
 		txtDescripcion.setColumns(10);
 		
 		txtID = new JTextField();
+		txtID.setFont(new Font("Consolas", Font.PLAIN, 11));
 		txtID.setBounds(132, 124, 86, 20);
 		contentPane.add(txtID);
 		txtID.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
+		lblDescripcion.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblDescripcion.setBounds(36, 14, 86, 14);
 		contentPane.add(lblDescripcion);
 		
 		JLabel lblNewLabel_1 = new JLabel("ID:");
+		lblNewLabel_1.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setBounds(76, 127, 46, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JComboBox comboBoxTipoAuto = new JComboBox();
+		comboBoxTipoAuto.setFont(new Font("Consolas", Font.PLAIN, 11));
 		comboBoxTipoAuto.setToolTipText("Tipo");
 		comboBoxTipoAuto.setBounds(132, 42, 292, 20);
 		comboBoxTipoAuto.addItem("Seleccione tipo ");
@@ -97,11 +102,13 @@ public class ABMAuto extends JFrame {
 		
 		
 		lblTipo = new JLabel("Tipo:");
+		lblTipo.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblTipo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTipo.setBounds(76, 45, 46, 14);
 		contentPane.add(lblTipo);
 		
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -131,6 +138,7 @@ public class ABMAuto extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Auto auto = new Auto();
@@ -142,6 +150,7 @@ public class ABMAuto extends JFrame {
 		contentPane.add(btnBuscar);
 		
 		btnBorrar = new JButton("Borrar");
+		btnBorrar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -151,10 +160,11 @@ public class ABMAuto extends JFrame {
 			}
 		});
 		btnBorrar.setForeground(Color.RED);
-		btnBorrar.setBounds(129, 227, 89, 23);
+		btnBorrar.setBounds(119, 227, 89, 23);
 		contentPane.add(btnBorrar);
 		
-		btnAtras = new JButton("Atras");
+		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -164,11 +174,12 @@ public class ABMAuto extends JFrame {
 		contentPane.add(btnAtras);
 		
 		lblBuscarPorId = new JLabel("Buscar por ID:");
-		lblBuscarPorId.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblBuscarPorId.setFont(new Font("Consolas", Font.PLAIN, 11));
 		lblBuscarPorId.setBounds(76, 102, 86, 14);
 		contentPane.add(lblBuscarPorId);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if("Seleccione tipo " == comboBoxTipoAuto.getSelectedItem()){
@@ -189,7 +200,7 @@ public class ABMAuto extends JFrame {
 				
 			}
 		});
-		btnActualizar.setBounds(236, 227, 89, 23);
+		btnActualizar.setBounds(228, 227, 97, 23);
 		contentPane.add(btnActualizar);
 		
 	}

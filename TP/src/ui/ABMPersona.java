@@ -54,11 +54,13 @@ public class ABMPersona extends JFrame {
 		CtrlPersona controlador = new CtrlPersona();
 		
 		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Consolas", Font.PLAIN, 12));
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setBounds(33, 31, 66, 14);
 		contentPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
+		lblApellido.setFont(new Font("Consolas", Font.PLAIN, 12));
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setBounds(33, 69, 66, 14);
 		contentPane.add(lblApellido);
@@ -68,37 +70,44 @@ public class ABMPersona extends JFrame {
 		contentPane.add(lblDni);
 		
 		txtId = new JTextField();
+		txtId.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtId.setEditable(false);
 		txtId.setBounds(108, 139, 86, 20);
 		contentPane.add(txtId);
 		txtId.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtNombre.setBounds(108, 28, 86, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtApellido = new JTextField();
+		txtApellido.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtApellido.setBounds(108, 66, 86, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		txtDni = new JTextField();
+		txtDni.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtDni.setBounds(108, 106, 86, 20);
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
 		
 		Label lblResultado = new Label("-");
+		lblResultado.setFont(new Font("Consolas", Font.PLAIN, 12));
 		lblResultado.setAlignment(Label.CENTER);
-		lblResultado.setBounds(33, 234, 234, 22);
+		lblResultado.setBounds(33, 233, 234, 22);
 		contentPane.add(lblResultado);
 
 		JCheckBox chckbxHabilitado = new JCheckBox("Habilitado");
+		chckbxHabilitado.setFont(new Font("Consolas", Font.PLAIN, 12));
 		chckbxHabilitado.setSelected(true);
 		chckbxHabilitado.setBounds(342, 27, 97, 23);
 		contentPane.add(chckbxHabilitado);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnGuardar.setForeground(new Color(0, 128, 0));
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -120,6 +129,7 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnGuardar);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.baja(Integer.parseInt(txtDni.getText()));
@@ -131,6 +141,7 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnBorrar);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -148,6 +159,7 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnActualizar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Consolas", Font.PLAIN, 12));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -170,15 +182,18 @@ public class ABMPersona extends JFrame {
 		contentPane.add(btnBuscar);
 		
 		JRadioButton rdbtnUsuario = new JRadioButton("Usuario");
+		rdbtnUsuario.setFont(new Font("Consolas", Font.PLAIN, 11));
 		rdbtnUsuario.setSelected(true);
 		rdbtnUsuario.setBounds(231, 31, 109, 23);
 		contentPane.add(rdbtnUsuario);
 		
 		JRadioButton rdbtnAdministrador = new JRadioButton("Administrador");
+		rdbtnAdministrador.setFont(new Font("Consolas", Font.PLAIN, 11));
 		rdbtnAdministrador.setBounds(231, 53, 109, 23);
 		contentPane.add(rdbtnAdministrador);
 		
 		JRadioButton rdbtnGerente = new JRadioButton("Gerente");
+		rdbtnGerente.setFont(new Font("Consolas", Font.PLAIN, 11));
 		rdbtnGerente.setBounds(231, 75, 109, 23);
 		contentPane.add(rdbtnGerente);
 		
@@ -193,7 +208,7 @@ public class ABMPersona extends JFrame {
 		contentPane.add(lbl_ID);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTipo.setFont(new Font("Consolas", Font.PLAIN, 12));
 		lblTipo.setBounds(231, 11, 46, 14);
 		contentPane.add(lblTipo);
 		
@@ -203,11 +218,13 @@ public class ABMPersona extends JFrame {
 		contentPane.add(lblUser);
 		
 		txtUser = new JTextField();
+		txtUser.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtUser.setColumns(10);
 		txtUser.setBounds(108, 171, 86, 20);
 		contentPane.add(txtUser);
 		
 		txtPass = new JTextField();
+		txtPass.setFont(new Font("Consolas", Font.PLAIN, 12));
 		txtPass.setColumns(10);
 		txtPass.setBounds(108, 203, 86, 20);
 		contentPane.add(txtPass);
@@ -217,7 +234,8 @@ public class ABMPersona extends JFrame {
 		lblPass.setBounds(37, 201, 62, 22);
 		contentPane.add(lblPass);
 		
-		JButton btnAtras = new JButton("Atras");
+		JButton btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.setFont(new Font("Consolas", Font.PLAIN, 11));
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
