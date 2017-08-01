@@ -1,8 +1,7 @@
 package ui;
-import entidades.Persona;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import entidades.Persona;
 
-import javax.swing.JLabel;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,6 +18,10 @@ import java.awt.Font;
 
 public class Menu extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int idPersona;
 	public int getIdPersona() {
 		return idPersona;

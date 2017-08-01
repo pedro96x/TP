@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.CompoundBorder;
@@ -102,15 +103,19 @@ public class MisReservas extends JFrame {
 		JButton btnCancelarReserva = new JButton("Cancelar Reserva");
 		btnCancelarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int row;
-				row=table.getSelectedRow();
-				int idRes;
-				idRes=Integer.parseInt((String) table.getModel().getValueAt(row,0));
-					
-					ctrlReserva.deleteById(idRes);
-					dispose();
-					MisReservas mr = new MisReservas(idPersona);		
-					mr.setVisible(true);
+				if(JOptionPane.showConfirmDialog(contentPane, "¿Esta seguro que desea cancelar la reserva?")==0){
+					int row;
+					row=table.getSelectedRow();
+					int idRes;
+					idRes=Integer.parseInt((String) table.getModel().getValueAt(row,0));
+						
+						ctrlReserva.deleteById(idRes);
+						dispose();
+						MisReservas mr = new MisReservas(idPersona);		
+						mr.setVisible(true);
+				}
+				
+				
 				
 				
 			}

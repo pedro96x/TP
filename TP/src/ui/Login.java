@@ -2,19 +2,16 @@ package ui;
 import controladores.CtrlLogin;
 import entidades.Persona;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
-import java.awt.Frame;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.BoxLayout;
-import java.awt.TextField;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -25,6 +22,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private CtrlLogin ctrl=new CtrlLogin();
 
 	private JPanel contentPane;
@@ -71,6 +73,7 @@ public class Login extends JFrame {
 		
 		JButton btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Persona p = new Persona();

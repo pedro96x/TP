@@ -181,11 +181,14 @@ public class ABMReserva extends JFrame {
 						 
 						
 //						autosDisponibles = new ArrayList<Auto>(new HashSet<Auto>(autosDisponibles));//Esta sentencia elimina los autos duplicados del array
-		
-						for(int k=0;k<autosDisponibles.size();k++){
-							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}
+						if(autosDisponibles.size()==0){
+							JOptionPane.showMessageDialog(contentPane, "No hay autos disponibles en la fecha solicitada, cambiar las fechas y verificar nuevamente.");
+						}
+						else{for(int k=0;k<autosDisponibles.size();k++){
+							 comboBox2.addItem(autosDisponibles.get(k).getNombre());}}
 							 
-				 }}
+				 }txtFechaIni.setEditable(false);
+				 txtFechaFin.setEditable(false);}
 		
 	});
 	btnVerificarFecha.setBounds(369, 166, 125, 23);
@@ -211,6 +214,27 @@ public class ABMReserva extends JFrame {
 	lblAaaammdd.setFont(new Font("Tahoma", Font.BOLD, 11));
 	lblAaaammdd.setBounds(369, 45, 74, 14);
 	contentPane.add(lblAaaammdd);
+	
+	JButton btnLimpiar = new JButton("Limpiar");
+	btnLimpiar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			
+			txtFechaIni.setText(" ");
+			txtFechaFin.setText(" ");
+			txtDetalle.setText("");
+			txtResultado.setText(" ");
+			
+			txtFechaIni.setEditable(true);
+			txtFechaFin.setEditable(true);
+			
+			comboBox2.removeAllItems();
+			comboBox.setSelectedIndex(0);
+
+
+		}
+	});
+	btnLimpiar.setBounds(143, 227, 89, 23);
+	contentPane.add(btnLimpiar);
 	
 }
 
