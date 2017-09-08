@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry kind="lib" path="C:/Users/gui2_/Desktop/joda-time-2.9.9.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gui2_/Desktop/UTN/Java/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gui2_/Desktop/Carpetas/UTN/Java/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gui2_/Desktop/Carpetas/UTN/Java/mysql-connector-java-5.1.42/joda-time-2.9.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

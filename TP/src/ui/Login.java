@@ -58,8 +58,9 @@ public class Login extends JFrame {
 	public Login() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 323, 132);
+		setBounds(100, 100, 323, 133);
 		contentPane = new JPanel();
+		
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -82,29 +83,7 @@ public class Login extends JFrame {
 		btnIngresar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				
-				Persona p = new Persona();
-				p.setUser(txtUser.getText());
-				p.setPass(passFieldPass.getText());
-				Persona per=null;
-				per =ctrl.compara(p);
-				if (per == null){JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
-				
-				if(per!=null){
-						
-						
-						Menu menu = new Menu();
-						menu.setVisible(true);
-						menu.setPersona(per);
-						menu.setIdPersona(per.getId());
-						
-						
-						
-						
-						}
-					
-							
-				
+				btnIngresarClick();
 			}
 		});
 		btnIngresar.setBounds(194, 52, 103, 23);
@@ -127,5 +106,21 @@ public class Login extends JFrame {
 		txtUser.setBounds(56, 14, 108, 20);
 		contentPane.add(txtUser);
 		txtUser.setColumns(10);
+	}
+	
+	private void btnIngresarClick(){
+		Persona p = new Persona();
+		p.setUser(txtUser.getText());
+		p.setPass(passFieldPass.getText());
+		Persona per=null;
+		per =ctrl.compara(p);
+		if (per == null){JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña incorrectos");}
+		
+		if(per!=null){
+			Menu menu = new Menu();
+			menu.setVisible(true);
+			menu.setPersona(per);
+			menu.setIdPersona(per.getId());		
+		}
 	}
 }
